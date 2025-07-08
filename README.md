@@ -55,8 +55,7 @@ project/
    source .venv/bin/activate
    ```
 
-3. **Pacotes utilizados:**
-   - Ou com pip:
+3. **Pacotes utilizados:**   
      ```bash
      fastapi
      uvicorn
@@ -104,13 +103,35 @@ python message.py
 ```
 ---
 
-## Observações
+## Observações sobre RAG
 
 - A base de conhecimento deve estar em `data/data.csv`.
 - O sistema utiliza embeddings em português para busca semântica.
 - O modelo Llama3 é acessado via HuggingFace ou endpoint local, conforme configuração.
 
----
+Estrutura da pasta `rag`
+
+```
+rag/
+├── rag_knowledge_base.py
+├── embeddings_manager.py
+├── vector_store_manager.py
+```
+
+Descrição dos Arquivos
+
+- **`rag_knowledge_base.py`**  
+  Implementa a engine principal de RAG (Retrieval-Augmented Generation) do projeto.  
+  Responsável por orquestrar a consulta à base de conhecimento, integração com embeddings e busca semântica.
+
+- **`embeddings_manager.py`**  
+  Gerencia a criação e manipulação de embeddings de texto, utilizando modelos de linguagem para transformar textos em vetores numéricos.  
+  Lógica para seleção de modelos, pré-processamento e armazenamento temporário de embeddings.
+
+- **`vector_store_manager.py`**  
+  Responsável pelo armazenamento, indexação e busca eficiente dos vetores de embeddings.  
+  Métodos para adicionar, consultar e gerenciar documentos vetorizados na base de conhecimento.
+
 
 # Sobre o projeto
 
